@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Studio Stint - Some of my recent work</h1>
+    </header>
+<div class="carousel">
+    <div class="carousel-arrow left">‹</div>
+  <!-- Add your images here -->
+  <img src="images/1.jpg" class="active">
+  <img src="images/2.jpg">
+  <img src="images/3.jpg">
+  <img src="images/4.jpg">
+  <img src="images/5.jpg">
+  <img src="images/6.jpg">
+  <img src="images/7.jpg">
+  <img src="images/8.jpg">
+  <img src="images/9.jpg">
+  <img src="images/10.jpg">
+  <img src="images/11.jpg">
+  <img src="images/12.jpg">
+  <img src="images/13.jpg">
+  <img src="images/14.jpg">
+  <div class="carousel-arrow right">›</div>
+</div>
+
+<script>
+  let current = 0;
+const images = document.querySelectorAll(".carousel img");
+const totalImages = images.length;
+let slideInterval = setInterval(nextImage, 4000); // Change image every 4 seconds
+
+function nextImage() {
+  changeImage(1);
+}
+
+function previousImage() {
+  changeImage(-1);
+}
+
+function changeImage(step) {
+  images[current].classList.remove("active");
+  current = (current + step + totalImages) % totalImages;
+  images[current].classList.add("active");
+  resetInterval();
+}
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextImage, 3000);
+}
+
+document.querySelector('.carousel-arrow.left').addEventListener('click', previousImage);
+document.querySelector('.carousel-arrow.right').addEventListener('click', nextImage);
+
+</script>
+
+</body>
+</html>
