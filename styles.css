@@ -1,18 +1,29 @@
+/* Default styles for desktop */
 .carousel {
   width: 40%; /* Adjust this value as needed */
-  margin: 50px auto; /* This centers the carousel itself */
+  margin: 50px auto; /* Centers the carousel */
   overflow: hidden;
-  position: relative; /* Needed for absolute positioning of children like arrows */
-  }
+  position: relative;
+}
 
 .carousel img {
-  width: 100%; /* Sets the image width to 90% of the carousel */
+  width: 100%; /* Makes the image fill the carousel */
   display: none; /* Hide all images by default */
-  margin: 0 auto; /* This centers the image within the carousel */
 }
 
 .carousel img.active {
-  display: block;
+  display: block; /* Show the active image */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .carousel {
+    width: 80%; /* Makes the carousel wider on mobile devices */
+  }
+
+  .carousel img {
+    /* You can add additional mobile-specific styles here */
+  }
 }
 
 .carousel-arrow {
