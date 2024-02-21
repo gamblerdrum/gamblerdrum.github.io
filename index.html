@@ -10,53 +10,88 @@
 <body>
 <header>
     <h1>Studio Stint - Some of my recent work</h1>
-    </header>
+</header>
+
 <div class="carousel">
-  <!-- Add your images here -->
-  <img src="images/1.jpg" class="active">
-  <img src="images/2.jpg">
-  <img src="images/3.jpg">
-  <img src="images/4.jpg">
-  <img src="images/5.jpg">
-  <img src="images/6.jpg">
-  <img src="images/7.jpg">
-  <img src="images/8.jpg">
-  <img src="images/9.jpg">
-  <img src="images/10.jpg">
-  <img src="images/11.jpg">
-  <img src="images/12.jpg">
-  <img src="images/13.jpg">
-  <img src="images/14.jpg">
+  <!-- Updated images with blurbs -->
+  <img src="images/1.jpg" class="active" data-blurb="This is image 1 - I painted this with paint">
+  <img src="images/2.jpg" data-blurb="This is image 2 - I painted this with paint">
+  <img src="images/3.jpg" data-blurb="This is image 3 - I painted this with paint">
+  <img src="images/4.jpg" data-blurb="This is image 4 - I painted this with paint">
+  <img src="images/5.jpg" data-blurb="This is image 5 - I painted this with paint">
+  <img src="images/6.jpg" data-blurb="This is image 6 - I painted this with paint">
+  <img src="images/7.jpg" data-blurb="This is image 7 - I painted this with paint">
+  <img src="images/8.jpg" data-blurb="This is image 8 - I painted this with paint">
+  <img src="images/9.jpg" data-blurb="This is image 9 - I painted this with paint">
+  <img src="images/10.jpg" data-blurb="This is image 10 - I painted this with paint">
+  <img src="images/11.jpg" data-blurb="This is image 11 - I painted this with paint">
+  <img src="images/12.jpg" data-blurb="This is image 12 - I painted this with paint">
+  <img src="images/13.jpg" data-blurb="This is image 13 - I painted this with paint">
+  <img src="images/14.jpg" data-blurb="This is image 14 - I painted this with paint">
 </div>
+
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p id="modalText">Some text in the Modal..</p>
+  </div>
+</div>
+
 <script>
   let current = 0;
-const images = document.querySelectorAll(".carousel img");
-const totalImages = images.length;
-let slideInterval = setInterval(nextImage, 4000); // Change image every 4 seconds
+  const images = document.querySelectorAll(".carousel img");
+  const totalImages = images.length;
+  let slideInterval = setInterval(nextImage, 4000); // Change image every 4 seconds
 
-function nextImage() {
-  changeImage(1);
-}
+  function nextImage() {
+    changeImage(1);
+  }
 
-function previousImage() {
-  changeImage(-1);
-}
+  function previousImage() {
+    changeImage(-1);
+  }
 
-function changeImage(step) {
-  images[current].classList.remove("active");
-  current = (current + step + totalImages) % totalImages;
-  images[current].classList.add("active");
-  resetInterval();
-}
+  function changeImage(step) {
+    images[current].classList.remove("active");
+    current = (current + step + totalImages) % totalImages;
+    images[current].classList.add("active");
+  }
 
-function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextImage, 3000);
-}
+  function resetInterval() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextImage, 4000);
+  }
 
-document.querySelector('.carousel-arrow.left').addEventListener('click', previousImage);
-document.querySelector('.carousel-arrow.right').addEventListener('click', nextImage);
+  // Get the modal
+  var modal = document.getElementById("myModal");
 
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // Loop through each image in the carousel
+  document.querySelectorAll('.carousel img').forEach(function(img) {
+    img.onclick = function() {
+      var blurb = this.getAttribute('data-blurb'); // Get the blurb from the data attribute
+      document.getElementById('modalText').innerHTML = blurb; // Set the modal text to the blurb
+      modal.style.display = "block"; // Show the modal
+      clearInterval(slideInterval); // Pause the carousel
+    }
+  });
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+    resetInterval(); // Resume the carousel
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      resetInterval(); // Resume the carousel
+    }
+  }
 </script>
 
 </body>
