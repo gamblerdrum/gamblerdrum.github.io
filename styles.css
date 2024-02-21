@@ -6,7 +6,7 @@
   }
 
 .carousel img {
-  width: 90%; /* Sets the image width to 90% of the carousel */
+  width: 100%; /* Sets the image width to 90% of the carousel */
   display: none; /* Hide all images by default */
   margin: 0 auto; /* This centers the image within the carousel */
 }
