@@ -9,6 +9,7 @@
 .carousel img {
   width: 100%; /* Makes the image fill the carousel */
   display: none; /* Hide all images by default */
+  border-radius: 10px; /* Rounds the corners of the images */
 }
 
 .carousel img.active {
