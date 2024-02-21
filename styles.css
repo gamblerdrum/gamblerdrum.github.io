@@ -15,44 +15,6 @@
   display: block; /* Show the active image */
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-  .carousel {
-    width: 80%; /* Makes the carousel wider on mobile devices */
-  }
-
-  .carousel img {
-    /* You can add additional mobile-specific styles here */
-  }
-}
-
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  background-color: #ffffff;
-  padding: 10px;
-  border-radius: 50%;
-  user-select: none;
-  z-index: 10;
-}
-
-.carousel-arrow.left {
-  left: -5px;
-}
-
-.carousel-arrow.right {
-  right: -5px;
-}
-
-.carousel-indicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 header h1 {
   font-family: 'Nunito', sans-serif;
   text-align: center;
@@ -61,6 +23,17 @@ header h1 {
 }
 
 body {
-  padding: 0 60px;
-  overflow-x: hidden;
+  padding: 0 60px; /* Adjust if needed to ensure content is well-spaced */
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .carousel {
+    width: 80%; /* Makes the carousel wider on mobile devices */
+  }
+
+  body {
+    padding: 0 20px; /* Reduced padding on smaller screens for more space */
+  }
 }
